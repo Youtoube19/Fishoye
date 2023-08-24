@@ -1,0 +1,87 @@
+.container {
+    display: flex;flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+}
+.size {
+    width: 250px;
+}
+.pass {
+    background-color: rgb(198, 100, 100);
+    align-items: center;
+    width: 180px;
+    padding: 5px;
+    border-radius: 10px;
+    text-align: center;
+}
+.upperdiv{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+.couleur {
+    color: brown;
+    font-size: 30px;
+}
+.border {
+    border: solid;
+    border-color: rgb(152, 157, 161);
+    margin: 5px;
+    border-radius: 15px;
+    border-width: 1px;
+    padding: 3px 10px;
+}
+.dimension {
+    width:250px;
+    height: 250px;
+    border-radius: 100%;
+    object-fit: cover;
+    /* margin-left: 70px; */
+    margin-top: 40px; 
+}
+.blur {
+    width: 400px;
+    /* background-color: blue; */
+}
+.blure {
+    color: rgb(167, 20, 20);
+    /* margin-left: 40px; */
+}
+.red {
+    color: red;
+    font-size: 45px;
+    line-height: 2px;
+}
+.frex-wrap {
+    align-items: flex-start;
+    display: flex;flex-wrap: wrap;
+    justify-content: space-around;
+}
+ul {
+    display: flex;flex-wrap: wrap;
+    flex-direction: row;
+    list-style-type: none;
+    color: brown;
+    margin: 5px;
+    padding: 3px 10px;
+    background-color: transparent;
+    text-decoration: none;
+}
+.flex-centre {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.filter {
+    cursor: pointer;
+    padding: 10px;
+  }
+  
+  .filter:hover {
+    background-color: lightgray;
+  }
+  
+  .filter.active {
+    background-color: gray;
+    color: white;
+  }
