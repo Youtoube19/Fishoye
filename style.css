@@ -7,7 +7,7 @@
     width: 250px;
 }
 .pass {
-    background-color: rgb(198, 100, 100);
+    background-color: #db8876;
     align-items: center;
     width: 180px;
     padding: 5px;
@@ -20,12 +20,13 @@
     justify-content: center;
 }
 .couleur {
-    color: brown;
-    font-size: 30px;
+    color: #901c1c;
+    size: 36px;
+    font-size: 46.87px;
 }
 .border {
     border: solid;
-    border-color: rgb(152, 157, 161);
+    border-color: #c4c4c4;
     margin: 5px;
     border-radius: 15px;
     border-width: 1px;
@@ -44,11 +45,11 @@
     /* background-color: blue; */
 }
 .blure {
-    color: rgb(167, 20, 20);
+    color: #901c1c;
     /* margin-left: 40px; */
 }
 .red {
-    color: red;
+    color: #d3573c;
     font-size: 45px;
     line-height: 2px;
 }
@@ -61,7 +62,7 @@ ul {
     display: flex;flex-wrap: wrap;
     flex-direction: row;
     list-style-type: none;
-    color: brown;
+    color: #901c1c;
     margin: 5px;
     padding: 3px 10px;
     background-color: transparent;
@@ -84,4 +85,7 @@ ul {
   .filter.active {
     background-color: gray;
     color: white;
+  }
+  .margin1 {
+    color: #757575;
   }
