@@ -64,8 +64,6 @@ function constructionOfHeader() {
     // let newli.innerHTML = li.slice(0,5);
   }
 
-  
-
   var filters = document.getElementsByClassName("ul");
 
 
@@ -73,134 +71,49 @@ function constructionOfHeader() {
 
     console.log(photographers);
     //     let filterList;
-  let data = [];
-  const  filters = document.querySelectorAll('.border')
+    let dataTags = [];
+    const filters = document.querySelectorAll('.border')
+    console.log(filters)
     if (filters) {
       filters.forEach(item => {
         console.log(item);
         item.addEventListener("click", function (event) {
           item.style.backgroundColor = "red";
-
           const element = item.innerHTML.slice(1)
           // console.log('choix du tag',data);
-          console.log('choix du tag',element);
-          console.log('choix du tag',data.includes(element));
-          if(data.includes(element)){
-            const index = data.indexOf(element);
-            data.splice(index,1)
-            console.log(data)
+          console.log('choix du tag', element);
+          console.log('choix du tag', dataTags.includes(element));
+          if (dataTags.includes(element)) {
+            const index = dataTags.indexOf(element);
+            dataTags.splice(index, 1)
+            console.log(dataTags)
             item.style.backgroundColor = "white";
-          }else{
-            data.push(element);
-            console.log(data)
+          } else {
+            dataTags.push(element);
+            console.log(dataTags)
           }
-          
+          genererfilters(dataTags)
         })
       })
     }
-
-    function filtrerTags() {
-      // Récupérer la liste des tags pour chaque image
-      var portraitphotographeElement = document.querySelectorAll('.portraitphotographeElement .tag');
-    
-      // Filtrer les éléments en fonction du critère souhaité
-      var critereFiltre = 'votre_critere_de_filtrage';
-      var elementsFiltres = Array.from(portraitphotographeElement).filter(function(tag){
-        return tag.innerHTML === critereFiltre;
-      });
-    
-      // Faire quelque chose avec les éléments filtrés
-      elementsFiltres.forEach(function(element) {
-        // Manipuler les éléments filtrés ici
-      });
-    }
-    
-    // Exemple d'utilisation lors d'un clic sur un bouton
-    var boutonFiltrer = document.querySelector('#boutonFiltrer');
-    boutonFiltrer.addEventListener('click', filtrerTags);
-    // tagElement.addEventListener("click", handleClick);
-    // const tagElement = document.getElementById("myTag");
-    
-//      function tagListItems(event) {
-//       console.log(event)
-//          // Sélectionnez tous les éléments de la liste de tags
-// const tagListItems = document.querySelectorAll('.border li');
-
-// // Parcourir chaque élément de la liste de tags
-// tagListItems.forEach((tagListItem) => {
-//   // Ecouteur d'événement "click" sur chaque élément
-//   tagListItem.addEventListener('click', () => {
-//     // Obtenez la valeur du filtre à partir de l'attribut data
-//     const filter = tagListItem.getAttribute('data-filter');
-
-//     // Sélectionnez toutes les images
-//     const images = document.querySelectorAll('.image');
-
-//     // Parcourir chaque image
-//     images.forEach((image) => {
-//       // Obtenez les tags de l'image actuelle
-//       const tags = image.querySelector('img').getAttribute('data-tags');
-
-//       // Vérifiez si les tags incluent le filtre sélectionné
-//       if (tags.includes(filter)) {
-//         // Afficher l'image si le filtre correspond
-//         image.style.display = 'block';
-//       } else {
-//         // Masquer l'image si le filtre ne correspond pas
-//         image.style.display = 'none';
-//       }
-//     });
-//   });
-// });
-//      }
-    //   const x = event.clientX;
-    //   const y = event.clientY;
-    //   console.log(event)
-    //   // Utilisez une API de synthèse vocale pour lire la position exacte du curseur.
-    //   const speech = new SpeechSynthesisUtterance();
-    //   speech.text = `La position du curseur est ${x} pixels à l'horizontale et ${y} pixels à la verticale.`;
-    //   speechSynthesis.speak(speech);
-    
-    //   // Ajoutez ici des instructions supplémentaires selon vos besoins.
-    //   if ('speechSynthesis' in window) {
-    //     // Utilisez la langue française pour la synthèse vocale.
-    //     speech.lang = 'fr-FR';
-    //   } else {
-    //     // Gérez le cas où la synthèse vocale n'est pas prise en charge.
-    //     console.error("La synthèse vocale n'est pas prise en charge par votre navigateur.");
-    //   }
-    // }
-
-    // function genererfilters(border) {
-    //   var item = document.getElementById("item")
-    //   var contenu = item.innerHTML;
-    //   console.log(contenu)
-    //   l
-    // }
-
-    // for (var i = 0; i < filters.length; i++) {
-    //   filters[i].addEventListener("click", function () {
-    //     // Supprimer la classe active de tous les filtres
-    //     for (var j = 0; j < filters.length; j++) {
-    //       filters[j].filter.remove("active");
-    //     }
-
-    //     // Ajouter la classe active au filtre cliqué
-    //     this.filter.add("active");
-
-    //     // Faire quelque chose lorsque le filtre est cliqué
-    //     // Par exemple, filtrer une liste d'éléments en fonction du filtre sélectionné
-    //     var filters = this.innerHTML;
-    //     // exécuter une fonction de filtrage
-    //     filterList(filters);
-    //   });
-    //
-    // // genererhead.appendChild(filterList)
   }
-  
+  function genererfilters(dataTags) {
+
+    let photos = [];
+    FishEyeData.photographers.forEach(item => {
+      if (dataTags.every(element => item.tags.includes(element))) {
+        photos.push(item)
+      }
+    })
+    document.querySelector('main').innerHTML = '';
+    generermain(photos);
+
+  }
+
   genernermenu(generertags(FishEyeData.photographers), navmenu)
   // genernerhead(genernermenu(FishEyeData.photographers), navmenu)
-  
+  // genernermenu(genererfilter(FishEyeData.photographers), navmenu)
+
   cont.appendChild(imagejs);
   cont.appendChild(navmenu);
   cont.appendChild(photographes);
@@ -209,24 +122,35 @@ function constructionOfHeader() {
 
   header.appendChild(cont)
   genererhead(FishEyeData.photographers)
-  
+
   function generermain(main) {
     // Récupération de l'élément du DOM qui accueillera les fiches
-    var sectionFiches = document.createElement("div");
+    
     const dossiers = new Array("Mimi", "Ellie Rose", "Tracy", "Nabeel", "Rhode", "Marcel");
     for (let i = 0; i < main.length; i++) {
 
       var article = main[i];
       console.log(article)
       // Création d’une balise dédiée à une pièce automobile
-      var mainElement = document.createElement("div");
+      var mainElement = document.createElement("a");
+      mainElement.id = 'myElementId';
+      mainElement.setAttribute('id','myElementId')
+      mainElement.setAttribute('href', `inel.html?parametre=${article.id}`) 
       // Création des bales 
       var portraitphotographeElement = document.createElement("img");
-      var portrait = article.portrait
-      portraitphotographeElement.src = "./FishEye_Photos/Sample Photos/" + dossiers[i] + "/" + portrait
+      // var portrait = article.portrait
+      portraitphotographeElement.src = article.portrait;
+      
+      // portraitphotographeElement.href = "lien.js"
+      //  "./FishEye_Photos/Sample Photos/" + dossiers[i] + "/" + portrait
       console.log(portraitphotographeElement)
       portraitphotographeElement.alt = "..."
       portraitphotographeElement.setAttribute('class', 'dimension')
+      // function goToPage() {
+      // //   window.location.href = 'Index.html';
+      // // }
+      // // goToPage(portraitphotographeElement)
+
       // console.log(FishEyeData.photographers[0].id)
       var namephotographeElement = document.createElement("h2");
       namephotographeElement.innerText = article.name;
@@ -263,13 +187,12 @@ function constructionOfHeader() {
       genernermenu(article.tags, taglinephotographe)
 
     }
-    sectionFiches.setAttribute('class', 'frex-wrap')
+    sectionFiches.setAttribute('class', 'flex-wrap')
     document.querySelector("body").appendChild(sectionFiches)
 
   }
 
+  var sectionFiches = document.createElement("main");
   // Premier affichage de la page
   generermain(FishEyeData.photographers);
-  genererfilters(FishEyeData.tags)
-  tagListItems(FishEyeData.event)
 }
