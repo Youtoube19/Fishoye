@@ -92,3 +92,30 @@ ul {
   a {
     text-decoration: none;
   }
+  .flex-column {
+    display: inline-flex;
+    flex-wrap: wrap;
+    
+    /* justify-content: center;
+    align-items: center; */
+  }
+  .dimension2 {
+    width:250px;
+    height: 250px;
+    border-radius: 100%;
+    object-fit: cover;
+    margin-left: 70px;
+    margin-top: 40px; 
+}
+.background-clip{
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    z-index: -1;
+ }
+ @media(min-aspect-ratio:16/9){
+     .background-clip{
+         width: 100%;
+         height: auto;
+     }
+ }

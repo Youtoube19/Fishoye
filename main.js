@@ -1,6 +1,7 @@
+// import {FishEyeData} from "./data";
 const reponse = await fetch("FishEyeData.json");
-const FishEyeData = await reponse.json();
-console.log(FishEyeData)
+    const FishEyeData = await reponse.json();
+console.log('data',FishEyeData.media)
 constructionOfHeader();
 
 function constructionOfHeader() {
@@ -111,8 +112,6 @@ function constructionOfHeader() {
   }
 
   genernermenu(generertags(FishEyeData.photographers), navmenu)
-  // genernerhead(genernermenu(FishEyeData.photographers), navmenu)
-  // genernermenu(genererfilter(FishEyeData.photographers), navmenu)
 
   cont.appendChild(imagejs);
   cont.appendChild(navmenu);
